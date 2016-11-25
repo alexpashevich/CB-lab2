@@ -46,7 +46,7 @@ def em(y, thetas_init, epsilon):
         sum_y.append(sum_y[i] + y[i])
 
     while math.sqrt((theta1 - old_theta1) ** 2 + (theta2 - old_theta2) ** 2) > epsilon:
-        # print 'iter %d, cur theta = (%f,%f)' % (k, theta1, theta2)
+        print 'iter %d, cur theta = (%f,%f)' % (k, theta1, theta2)
         p_z = calc_p_z(y, (theta1, theta2)) # p_z[k] = p(z = k | y, thetas) so len(p_z) = n + 1, p_z[0] = undef
 
         (old_theta1, old_theta2) = (theta1, theta2)
@@ -57,7 +57,7 @@ def em(y, thetas_init, epsilon):
 
     # plt.hist(p_z_hist, nb_bins, normed=True)
     plt.bar(range(n), p_z[1:])
-    plt.xlabel('z')
+    plt.xlabel('z - 70')
     plt.ylabel('p(z|y,theta)')
     plt.show()
 
@@ -81,8 +81,8 @@ if __name__ == "__main__":
             plt.show()
             # if len(sys.argv) == 2:
 
-            first_val = 120
-            second_val = 60
+            first_val = 140
+            second_val = 70
 
             (z1, theta1, theta2, z_l, z_u, p_z) = em(y[:first_val], (theta1_init, theta2_init), epsilon)
             print 'estimated z = %d, thetas = (%f,%f), (z_l, z_u) = (%d, %d)' % (z1, theta1, theta2, z_l, z_u)
