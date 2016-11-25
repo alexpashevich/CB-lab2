@@ -56,7 +56,13 @@ def em(y, thetas_init, epsilon):
         theta1 = np.sum([p_z[j] * sum_y[j - 1] for j in xrange(2, n + 1)]) / np.sum([p_z[j] * (j - 1) for j in xrange(2, n + 1)])
         theta2 = np.sum([p_z[j] * (sum_y[n] - sum_y[j-1]) for j in xrange(1, n + 1)]) / np.sum([p_z[j] * (n - j + 1) for j in xrange(1, n + 1)])
 
-    plt.plot(p_z)
+    nb_bins = n
+    p_z_hist = []
+    for i in xrange(n):
+        for j in xrange(int(math.ceil(n * p_z[i]))):
+            p_z_hist.append(i)
+    plt.hist(p_z_hist, nb_bins, normed=True)
+    # plt.plot(p_z)
     plt.xlabel('z')
     plt.ylabel('p(z|y,theta)')
     plt.show()
