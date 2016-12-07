@@ -1,6 +1,7 @@
 import random
 import math
 import pickle
+import pandas as pd
 import sys
 import numpy as np
 import matplotlib.pyplot as plt
@@ -112,6 +113,15 @@ if __name__ == "__main__":
             
     else:
         with open(sys.argv[1], 'r') as f_y:
+            # df = pd.read_csv(sys.argv[1], header=None)
+            # print df
+            # print вы
+            # y = list(df)
+            # plt.plot(y)
+            # plt.show()
+            # print y
+            # theta1_init = 0.8
+            # theta1_init = 0.65
             y = pickle.load(f_y)
             (z, theta1, theta2, z_l, z_u, p_z) = em(y, (theta1_init, theta2_init), epsilon)
             print 'estimated z = %d, thetas = (%f,%f), (z_l, z_u) = (%d, %d)' % (z, theta1, theta2, z_l, z_u)
